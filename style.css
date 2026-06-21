@@ -82,20 +82,8 @@ button:hover{
     }
 
 }
-#status{
-    font-size:20px;
-    font-weight:bold;
-    margin-top:20px;
-}
 
 #users{
     margin-top:20px;
-}
-
-.user-card{
-    background:white;
-    border:1px solid black;
-    padding:15px;
-    margin:10px 0;
-    border-radius:10px;
+    font-size:18px;
 }
