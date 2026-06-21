@@ -1,38 +1,25 @@
-function loadUsers() {
+function loadUsers()
+{
+    document.getElementById("status").innerHTML = "Loading...";
 
-    const status = document.getElementById("status");
-    const users = document.getElementById("users");
-
-    status.innerHTML = "Loading...";
-    users.innerHTML = "";
-
-    setTimeout(() => {
-
+    setTimeout(function()
+    {
         fetch("https://jsonplaceholder.typicode.com/users")
-            .then(response => response.json())
-            .then(data => {
+        .then(response => response.json())
+        .then(data =>
+        {
+            let output = "";
 
-                data.forEach(user => {
+            for(let i = 0; i < data.length; i++)
+            {
+                output += "Name: " + data[i].name + "<br>";
+                output += "Email: " + data[i].email + "<br>";
+                output += "Phone: " + data[i].phone + "<br><br>";
+            }
 
-                    users.innerHTML += `
-                        <div class="user-card">
-                            <h3>${user.name}</h3>
-                            <p><strong>Email:</strong> ${user.email}</p>
-                            <p><strong>Phone:</strong> ${user.phone}</p>
-                        </div>
-                    `;
+            document.getElementById("users").innerHTML = output;
 
-                });
-
-                status.innerHTML = "Loaded successfully";
-
-            })
-            .catch(error => {
-
-                status.innerHTML = "Error loading data";
-                console.log(error);
-
-            });
-
+            document.getElementById("status").innerHTML = "Loaded successfully";
+        });
     }, 2000);
 }
